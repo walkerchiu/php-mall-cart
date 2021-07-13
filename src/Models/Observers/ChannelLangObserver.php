@@ -42,7 +42,7 @@ class ChannelLangObserver
                 ->where('key', $entity->key)
                 ->where('id', '<>', $entity->id);
 
-        if (config('wk-core.lang_log') || config('wk-mall-cart.lang_log'))
+        if (config('wk-mall-cart.soft_delete') && (config('wk-core.lang_log') || config('wk-mall-cart.lang_log')))
             $query->update(['is_current' => 0]);
         else
             $query->forceDelete();
